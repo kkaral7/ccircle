@@ -44,6 +44,7 @@ class Solution:
         # If you want to keep track of any variables, you can initialize them here using self.var = value
         # e.g.
         #   self.moveCount = 0
+        self.moves = 0
         pass
 
     # Choose your level here: 'easy', 'medium', or 'hard'!
@@ -56,5 +57,17 @@ class Solution:
 
     # Your solution!
     def moveTowardPizza(self, cat):
-        # Wheeeee!
-        cat.turnLeft()
+        if cat.isBlocked():
+            cat.turnLeft()
+        if cat.isFacingS():
+            cat.walk()
+        if cat.isFacingE():
+            cat.walk()
+        if cat.isFacingN():
+            cat.turnLeft()
+        if cat.isFacingW():
+
+
+
+
+        self.moves += 1
