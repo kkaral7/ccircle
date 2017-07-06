@@ -46,7 +46,7 @@ class StockTrader:
     #    0.5 -> moderate
     #    1.0 -> hardest
     def getDifficulty(self):
-        return 0.0
+        return 1.0
 
     # Controls how fast the simulation runs; 0 = fastest
     def getPauseTime(self):
@@ -62,8 +62,17 @@ class StockTrader:
         # (if we can afford it); sell any stock that is more than $20 (if we own it). You must do better than this!
         syms = market.getStockSymbols()
         for sym in syms:
+            history = market.getHistory(sym)
+            history = market.getHistory(sym)
+            s = sum(history)
+            s2 = len(history)
+            orprice = (s/s2)
             price = market.getPrice(sym)
-            if price < 10 and account.getBalance() >= price:
+
+            if price <= 10 and account.getBalance() >= price:
+                market.buy(account, sym, 4)
+
+            if orprice < price and account.getBalance() >= price:
                 market.buy(account, sym, 1)
-            if price > 10 and account.getShares(sym) > 0:
-                market.sell(account, sym, 1)
+            if price > 12 and account.getShares(sym) > 0:
+                market.sell(account, sym, 4)
