@@ -64,13 +64,14 @@ class Solution:
     # Your solution!
     def moveTowardPizza(self, cat):
         if cat.isBlocked():
-        cat.turnLeft()if cat.isFacingS():
+            cat.turnLeft()
+        if cat.isFacingS():
             cat.walk()
         if cat.isFacingE():
             cat.walk()
         if cat.isFacingN():
             cat.turnLeft()
-        if cat.isFacingW():
+        #if cat.isFacingW():
 
 
 
