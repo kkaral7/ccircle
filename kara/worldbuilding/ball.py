@@ -8,9 +8,9 @@ class Ball:
         self.fy = 0
         self.mass = 1
 
-def apply_force(self,fx,fy):
-    self.fx += fx
-    self.fy += fy
+    def apply_force(self,fx,fy):
+        self.fx += fx
+        self.fy += fy
 
     def draw(self,window):
         window.drawCircle(self.x,self.y,16,1,0,0.2)
@@ -25,6 +25,6 @@ def apply_force(self,fx,fy):
         self.fx = 0
         self.fy = 0
 
-    if self.y > 500:
-        self.vy *= -1.0
-        self.y = 500
+        if self.y > 500:
+            self.vy *= -1.0
+            self.y = 500
