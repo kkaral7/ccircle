@@ -3,7 +3,7 @@
     #print(thing)
 
 import ccircle
-from math import*
+"""from math import*
 window = ccircle.Window()
 window.toggleMaximized()
 
@@ -27,7 +27,6 @@ while window.isOpen():
 
 
 
-
     # ==   equal to
     #!= not equal to
     #>= greather than or equal to
@@ -36,3 +35,17 @@ while window.isOpen():
 
     window.drawCircle(mx, my, 8,0.1,1.0,1.0)
     window.update()
+
+"""
+window = ccircle.Window(1000,900)
+window.toggleMaximized()
+
+newimage = ccircle.Image(tictactoe.jpg)
+while window.isOpen():
+
+    window.clear(1,0.5,1.0)
+    newimage.draw(200,200,300,200)
+
+    window.update()
+
+
