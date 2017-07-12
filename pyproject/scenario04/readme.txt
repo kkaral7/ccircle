@@ -33,10 +33,24 @@
     get_boss_pos () -> (x, y)
         Returns a tuple that gives the current coordinates of the boss
 
+     get_reward_id() -> list of ids
+        Returns a list of id of every
+
+      get_reward_pos(id) - > list of ids
+        Returns the position of the reward with the given id
+
+
     get_name () -> str
         Returns your player's current name
 
+
     get_player_ids () -> list of player identifiers (ints)
         Returns a complete list of every player in the game (players are represented by a numeric id)
+
+     get_pos () -> (x, y)
+        Returns a tuple that gives the current coordinates of yourself
+
+       set_velocity(vx,vy) -> None
+        sets your velocity to (vx,vy)
 
 ------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+#lets make some clouds boiz
+
+class newcloud:
+    def __init__(self,x,y,size,vx):
+        self.x = x
+        self.y = y
+        self.size = size
+        self.vx = vx
+
+
+    def draw(self,window):
+        window.drawCircle(self.x,self.y,self.size,1,0,0.76,0.8)
+
+    def update(self,dt):
+        self.x += dt * self.vx
+
+        if self.x > 800: self.x = 0
+        if self.x < 0: self.x = 800
