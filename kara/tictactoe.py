@@ -1,3 +1,4 @@
+
 #tictactoe
 import ccircle
 
@@ -5,11 +6,6 @@ window = ccircle.Window("Let's play tic tac toe",1000,900)
 window.toggleMaximized()
 points = []
 
-'''class Board(object):
-    def _init_(self,settings):
-        self.settings = settings
-    
-'''
 
 
 while window.isOpen():
@@ -35,4 +31,5 @@ while window.isOpen():
 
     window.drawCircle(mx, my, 10,8,0.2,0.8,0.7)
     window.update()
+
 

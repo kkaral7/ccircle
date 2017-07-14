@@ -9,7 +9,7 @@ class newcloud3:
 
 
     def draw(self,window):
-        window.drawCircle(self.x,self.y,self.size,1,0.4,1,0.5)
+        window.drawCircle(self.x,self.y,self.size,1,0.3,1,0.6)
 
     def update(self,dt):
         self.x += dt * self.vx
