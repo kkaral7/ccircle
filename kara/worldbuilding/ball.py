@@ -10,8 +10,8 @@ class Ball:
         self.rgb = (1, 0, 0.2)
 
     def apply_force(self,fx,fy):
-        self.fx += fx
-        self.fy += fy
+        self.fx = fx
+        self.fy = fy
 
     def draw(self,window):
         window.drawCircle(self.x,self.y,16, self.rgb[0], self.rgb[1], self.rgb[2])
@@ -38,6 +38,4 @@ class Ball:
              #   self.rgb = (1, 0.1, 0.1)"""
         if self.y <50:
             self.vy *= 1.0
-
-
 
