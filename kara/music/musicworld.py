@@ -1,5 +1,5 @@
 class World:
-    def __init__(self,name) :
+    def __init__(self,name):
         self.name = name
         self.objects = []
 
@@ -14,3 +14,8 @@ class World:
     def update(self, dt):
         for obj in self.objects:
             obj.update(dt)
+
+    def addnote(self):   #should i delete this?
+        pass
+
+

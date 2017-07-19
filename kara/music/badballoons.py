@@ -1,6 +1,6 @@
 class badballoons:
 
-    def __init__(self,x,y,size,vx,vy,mass):
+    def __init__(self,x,y,size,vx,vy,mass,good):
             self.x = x
             self.y = y
             self.size = size
@@ -10,6 +10,7 @@ class badballoons:
             self.fx = 0
             self.fy = 0
             self.mass = mass
+            self.good = good
 
 
 
@@ -17,6 +18,7 @@ class badballoons:
         window.drawCircle(self.x, self.y, self.size + 1, 0, 0, 0)
         window.drawCircle(self.x, self.y, self.size,0.8,1,0.4)
         window.drawLine(self.x, self.y + self.size, self.x, self.y + self.size + self.stringLength)
+
 
     def apply_force(self,fx,fy):
         self.fx += fx
@@ -35,7 +37,7 @@ class badballoons:
 
 
 
-        if self.x > 800: self.x = 0  # keeps the balloons coming  #why do the balloons stop coming if i delete alot?
+        if self.x > 800: self.x = 0 #keeps the baloons coming
         if self.x < 0: self.x = 800
-        if self.y > 590: self.y = 0
-        if self.y < 0: self.y = 590
+        if self.y > 600: self.y = 0
+        if self.y < 0: self.y = 600
