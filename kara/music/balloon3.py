@@ -1,4 +1,4 @@
-class badballoons:
+class balloon3:
 
     def __init__(self,x,y,size,vx,vy,mass,good):
             self.x = x
@@ -16,11 +16,11 @@ class badballoons:
 
     def draw(self, window):
         window.drawCircle(self.x, self.y, self.size + 1, 0, 0, 0)
-        window.drawCircle(self.x, self.y, self.size,0.8,1,0.5)
+        window.drawCircle(self.x, self.y, self.size,0.6,0.3,0.7)
         window.drawLine(self.x - 14, self.y - 8, self.x - 14, self.y + 15, 5, 1, 0, 0)  # eyes
-        window.drawLine(self.x+14,self.y-8,self.x+14,self.y+15,5,1,0,0)
-        window.drawLine(self.x - 25, self.y - 14, self.x-5, self.y-2 ,3,0,0,0)  #angry eyebrows!
-        window.drawLine(self.x+2,self.y-3,self.x+22,self.y-14, 3, 0, 0, 0)
+        window.drawLine(self.x + 14, self.y - 8, self.x + 14, self.y + 15, 5, 1, 0, 0)
+        window.drawLine(self.x - 25, self.y - 14, self.x - 5, self.y - 2, 3, 0, 0, 0)  # angry eyebrows!
+        window.drawLine(self.x + 2, self.y - 3, self.x + 22, self.y - 14, 3, 0, 0, 0)
         window.drawLine(self.x, self.y + self.size, self.x, self.y + self.size + self.stringLength)
 
 

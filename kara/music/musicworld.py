@@ -1,3 +1,4 @@
+import ccircle
 class World:
     def __init__(self,name):
         self.name = name
@@ -6,8 +7,10 @@ class World:
     def add(self,obj):
         self.objects.append(obj)
 
-    def draw(self,window):
+    def draw(self,window,font,points):
         window.drawRect(1000,1000,100,100)
+        scoreString = 'Score: ' + str(points)
+        font.draw(scoreString,300,300,30,0,1,0)
         for obj in self.objects:
             obj.draw(window)
 
@@ -15,7 +18,5 @@ class World:
         for obj in self.objects:
             obj.update(dt)
 
-    def addnote(self):   #should i delete this?
-        pass
 
 

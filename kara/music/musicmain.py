@@ -6,49 +6,66 @@ import random
 import badballoons
 import background
 import sound
+import balloon3
 
-
-window = ccircle.Window("If you wait like 20 seconds, the game is better, rated E for everyone", 800,600)
+window = ccircle.Window("Click the pink balloons...or else... rated E for everyone", 800,600)
 my_world = musicworld.World('balloonworld')
-
+ww = 150
+tt = 700
+font = ccircle.Font('AldotheApache.ttf')
+points = 0
 
 for n in range(3000):   #background
-    x = random.randint(0,900)
-    y = random.randint(0,600)
+    x = random.randint(0,2000)
+    y = random.randint(0,900)
     width = random.randint(4,5)
     height = random.randint(4,5)
     size = 1    # this doesn't do anything
     vx = 0
     vy = 0
-    my_world.add(background.background(x,y,width,height,size,vx,vy))
+    my_world.add(background.background(x,y,width,height,size,vx,vy,False))
 
+balloonlist = []
 def addballoon():
-    x = random.randint(30, 35)
+    x = random.randint(15, 650)
     y = random.randint(800, 900)
     size = random.randint(40, 40)
-    vx = random.randint(0, 3)
-    vy = random.randint(2, 10)
-    mass = random.randint(4,20)
+    vx = random.randint(28, 47)
+    vy = random.randint(20, 40)
+    mass = random.randint(11,40)
     my_balloon = balloon.balloon(x, y, size, vx, vy,mass,True)
     my_world.add(my_balloon)
+    balloonlist.append(my_balloon)
 
-
-for i in range(20):  #balloons
+for i in range(12):  #balloons
     addballoon()
 
 def addbadballoon():
-    x = random.randint(35,35)
-    y = random.randint(900,900)
+    x = random.randint(0,600)
+    y = random.randint(800,900)
     size = random.randint(40,40)
-    vx = random.randint(0,3)
-    vy = random.randint(1,10)
-    mass = random.randint(5,10)
+    vx = random.randint(17,33)
+    vy = random.randint(20,40)
+    mass = random.randint(13,19)
     bad_balloon = badballoons.badballoons(x,y,size,vx,vy,mass,False)
     my_world.add(bad_balloon)
 
 
-for th in range(20): #badballoons
+for th in range(10): #badballoons
     addbadballoon()
+def addballoon3():
+    x = random.randint(0, 700)
+    y = random.randint(800, 900)
+    size = random.randint(40, 40)
+    vx = random.randint(25, 48)
+    vy = random.randint(20, 45)
+    mass = random.randint(16,32)
+    my_balloon3 = balloon3.balloon3(x, y, size, vx, vy,mass,False)
+    my_world.add(my_balloon3)
+
+
+for gg in range(8):  #balloon3
+    addballoon3()
 
 
 start = time.perf_counter()
@@ -59,19 +76,23 @@ dt = 1.0/60.0
 while window.isOpen():
     window.clear(0,0.5,0.7)
     my_world.update(dt)
-    my_world.draw(window)
+    my_world.draw(window,font,points)
     for xn in list(my_world.objects):
-        if len(my_world.objects)<=40: #and xn.good == True:    # adds more balloons when they get deleted
-            for nn in range(6):
+        if len(balloonlist) < 8:
+            for trn in range(6):
+                addballoon()
+        if len(my_world.objects)<=3050:   # adds more balloons when they get deleted
+            for nn in range(1):
                 addballoon()
                 addbadballoon()
-        #elif len(my_world.objects)<= 10 and xn.good == False:
-            #for yn in range(5):
+                addballoon3()
+
+
 
 
 
     for ev in my_world.objects:
-        ev.apply_force(5,8)
+        ev.apply_force(5,10)
 
 
     if ccircle.isMouseDown('left'):
@@ -80,9 +101,9 @@ while window.isOpen():
 
 
         for ln in list(my_world.objects):   #this part removes objects that go past certain boundaries
-            if ln.x < - ln.size and ln.x > 1000+ln.size:
+            if ln.x < - ln.size and ln.x > 1300+ ln.size:
                 my_world.objects.remove(ln)
-            if ln.y < 0-ln.size:
+            if ln.y < -200:  # 0 - ln.size
                 my_world.objects.remove(ln)
         for bn in list(my_world.objects):
             a = (bn.x - mx)
@@ -92,17 +113,23 @@ while window.isOpen():
 
             if (c ** 2) > pyg: #clicked a balloon    #note addition should be here
                 my_world.objects.remove(bn)
-                #if bn.good == True:
-                    #freq = 150
-                    #ssound = sound.sound(freq)
-                    #my_world.addnote(ssound)
-                    #pass
+                if bn.good == True or bn.good == True and bn.good == False:
+                    ww *= 2**(1/12)
+                    sound.creategoodnote(ww)
+                    if ww > 566:
+                        ww = 150
+                    points = points + 5
 
-                #else:
-                    #pass
+                elif bn.good == False or bn.good == False and bn.good == True:
+                    tt *= 2 **(1/12)
+                    sound.creategoodnote(tt) #actually a bad note
+                    window.clear(1, 0, 0)
+                    if tt > 1700:
+                         tt = 700
+                    points = points - 5
+
             if (c ** 2) <= pyg:  # didn't click a balloon
                 pass
-
     window.update()
 
 

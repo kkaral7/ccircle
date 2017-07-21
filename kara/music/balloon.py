@@ -13,10 +13,16 @@ class balloon:
 
 
 
-
+#go back to this yoo
     def draw(self,window):
         window.drawCircle(self.x,self.y,self.size+1,0,0,0)
         window.drawCircle(self.x,self.y,self.size,1,0.5,1)
+        window.drawLine(self.x-25,self.y,self.x-15,self.y-15,3,0,0,0)  #left eye
+        window.drawLine(self.x-5,self.y,self.x-15,self.y-15,3,0,0,0)
+        window.drawLine(self.x +25, self.y, self.x +15, self.y - 15, 3, 0, 0, 0)  #right eye
+        window.drawLine(self.x+5, self.y, self.x +15, self.y - 15, 3, 0, 0, 0)
+
+
         window.drawLine(self.x,self.y+self.size,self.x,self.y+self.size+self.stringLength)
 
 
